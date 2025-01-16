@@ -1,4 +1,4 @@
-package com.clinicaMedica.api.Domain.Medico;
+package com.clinicaMedica.api.Domain.Enuns;
 
 public enum Especialidade {
     ORTOPEDIA,
