@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode
 public class Endereco {
     private String logradouro;
     private String bairro;
@@ -19,7 +19,7 @@ public class Endereco {
     private String cidade;
     private String uf;
 
-
+    public  Endereco(){}
 
     public Endereco(DadosEndereco endereco) {
         this.logradouro = endereco.logradouro();
@@ -28,6 +28,6 @@ public class Endereco {
         this.numero = endereco.numero();
         this.complemento = endereco.complemento();
         this.cidade = endereco.cidade();
-        this.uf = endereco.cidade();
+        this.uf = endereco.uf();
     }
 }
