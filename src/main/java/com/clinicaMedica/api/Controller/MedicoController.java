@@ -26,7 +26,7 @@ public class MedicoController {
     }
 
     @GetMapping
-    public Page<DadosListagemMedico> listar(Pageable paginacao){
+    public Page<DadosListagemMedico> listar( @PageableDefault(size =10, sort = {"nome"}) Pageable paginacao){
        return  service.listarMedicos(paginacao);
     }
 
