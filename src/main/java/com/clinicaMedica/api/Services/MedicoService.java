@@ -1,5 +1,6 @@
 package com.clinicaMedica.api.Services;
 
+import com.clinicaMedica.api.Domain.Dtos.DadosAtualizacaoMeidcos;
 import com.clinicaMedica.api.Domain.Dtos.DadosCadastroMedico;
 import com.clinicaMedica.api.Domain.Dtos.DadosListagemMedico;
 import com.clinicaMedica.api.Domain.Medico;
@@ -24,7 +25,19 @@ public class MedicoService {
     }
 
     public Page<DadosListagemMedico> listarMedicos(Pageable pagina) {
-        return repository.findAll(pagina).map(DadosListagemMedico::new);
+        return repository.findAllByAtivoTrue(pagina).map(DadosListagemMedico::new);
     }
 
+    @Transactional
+    public void atualizar(DadosAtualizacaoMeidcos dados){
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
+    }
+
+    @Transactional
+    public void excluir(Long id) {
+        var medico = repository.getReferenceById(id);
+        medico.setAtivo(false);
+
+    }
 }
